@@ -1,0 +1,122 @@
+/*hover text*/
+.hoverAction {
+    font-size: 0.8rem !important;
+    font-weight: bold;
+   
+}
+.hoverAction:hover{
+    color: #F13F4C  !important;
+}
+#productsInTheShop{
+    background-color: #F5F3EE;
+    width: 100%;
+}
+
+.card {
+    border: none;
+    border-radius: 10px !important;
+    transition: transform 0.3s ease-in-out;
+   
+    border-radius: 0%;
+    height: 280px !important;
+    width: 300px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    color: var(--bs-card-color);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.oldPrice {
+    font-weight: 600 !important;
+    font-size: 0.5rem;
+}
+
+.ProductPrice {
+    display: inline-block;
+}
+
+.icon-resized {
+    font-size: 2rem;
+}
+
+.saleContianer {
+    border-radius: 100%;
+    height: 43px !important;
+    width: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F13F4C;
+    color: #000;
+    position: absolute;
+    top: 0;
+    margin: 2px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.card-title {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 13px;
+    color: #898989;
+}
+
+.card .badge {
+    font-size: 0.7rem;
+    padding: 0.5rem 0.8rem;
+}
+
+.card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #232a3291;
+    color: #F5F3EE;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+    border-radius: 10px !important;
+}
+
+.card .overlay a {
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.productImage {
+    object-fit: cover;
+    width: 100%;
+    height: 80% !important;
+}
+
+.hoverBtn {
+    background-color: #232A32 !important;
+    color: #E5DCD3 !important;
+    border-radius: 3px;
+    border: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4% 13%;
+}
+
+.hoverBtn:hover {
+    background-color: #eb5d67 !important;
+    color: #F5F3EE !important;
+
+}

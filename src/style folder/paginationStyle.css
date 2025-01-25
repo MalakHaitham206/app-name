@@ -1,0 +1,23 @@
+.pagination-container {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .page-button {
+    background-color: #f5f0eb;
+    border: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .page-button.active {
+    background-color: #3d3d2e;
+    color: white;
+  }
+  
+  .page-button.next {
+    background-color: #f5f0eb;
+  }
+  
