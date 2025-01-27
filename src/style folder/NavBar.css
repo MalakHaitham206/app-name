@@ -3,8 +3,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px; /* Adjust height as needed */
-    z-index: 1000; /* Ensures it stays on top */
+    height: 60px;
+    z-index: 1000;
 }
 
 
@@ -29,6 +29,19 @@
 .nav-item {
     color: inherit !important;
 }
+.navbar-text a:hover{
+    background-color: #d8d7d242;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    
+}
+.navbar-text a,.navbar-text li{
+    display: flex !important;
+    justify-content: center !important;
+    justify-items: center !important;
+}
+
 .navStyle {
     background-color: #F13F4C;
 }

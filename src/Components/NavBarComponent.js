@@ -5,14 +5,15 @@ import heartIcon from '../resources/home_page_icons/heartIcon.png';
 import cartIcon from '../resources/home_page_icons/cart-icon.png';
 import logo from '../resources/home_page_imges/Meubel House_Logos-05.png';
 import "bootstrap/dist/css/bootstrap.min.css";
+import  Search from "./SearchComponent";
 import '../style folder/NavBar.css';
+import { FaSearch } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({ onSearchChange }) => {
     return (
         <div className="d-block"> <nav className="navbar navbar-expand-lg navStyle" id="navBar">
         <div className="container-fluid navContainer">
-            <a className="navbar-brand" href="#">
-            
+            <a className="navbar-brand align-items-center" href="#">
                 <span className="WebsiteName">ScreenScape</span>
             </a>
             <button
@@ -30,24 +31,15 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarText">
                 <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-5 navContainer">
                     <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="#">
-                            Home
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">
-                            Shop
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">
-                            About
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">
-                            Contact
-                        </a>
+                    <div className="search-container">
+          <FaSearch className="search-icon" />
+          <input
+            type="text"
+            placeholder="Search Movies..."
+            className="search-input"
+            onChange={(e) => onSearchChange(e.target.value)}
+          />
+        </div>
                     </li>
                 </ul>
                 <span className="navbar-text">
@@ -60,14 +52,7 @@ const Navbar = () => {
                                 />
                             </a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                <img
-                                    src={searchIcon}
-                                    alt="Search"
-                                />
-                            </a>
-                        </li>
+                        
                         <li className="nav-item">
                             <a className="nav-link" href="#">
                                 <img

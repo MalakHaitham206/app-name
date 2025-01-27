@@ -1,9 +1,9 @@
 .search-container {
     display: flex;
     align-items: center;
-    background-color: #222;
+    /* background-color: #222; */
     padding: 10px;
-    border-radius: 25px;
+    border-radius: 23px;
     width: 250px;
   }
   
@@ -14,14 +14,14 @@
   
   .search-input {
     background: transparent;
-    border: none;
+    border: 1px solid #f9f5e79d !important;
     outline: none;
     color: white;
     font-size: 16px;
   }
   
   .search-input::placeholder {
-    color: white;
+    color: #f9f5e79d !important;
     opacity: 0.7;
   }
   

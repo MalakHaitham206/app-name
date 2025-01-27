@@ -1,24 +1,24 @@
-/*hover text*/
+
 .hoverAction {
     font-size: 0.8rem !important;
     font-weight: bold;
    
 }
+
 .hoverAction:hover{
     color: #F13F4C  !important;
 }
-#productsInTheShop{
-    background-color: #F5F3EE;
-    width: 100%;
+
+#filmContainer{
+    background-color: #D8D7D2;   
 }
 
 .card {
     border: none;
     border-radius: 10px !important;
     transition: transform 0.3s ease-in-out;
-   
     border-radius: 0%;
-    height: 280px !important;
+    height: 295px !important;
     width: 300px;
 }
 
@@ -46,15 +46,15 @@
 }
 
 .saleContianer {
-    border-radius: 100%;
+    border-radius:500px !important;
     height: 43px !important;
     width: 43px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F13F4C;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #F13F4C !important;
     color: #000;
-    position: absolute;
+    position: absolute !important;
     top: 0;
     margin: 2px;
     font-size: 19px;
@@ -91,7 +91,7 @@
 
 .card:hover .overlay {
     opacity: 1;
-    border-radius: 10px !important;
+    border-radius: 7px !important;
 }
 
 .card .overlay a {
