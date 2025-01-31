@@ -1,16 +1,23 @@
 import React, { useState, useEffect, useCallback } from "react";
 import StyledCard from "../Components/CardComponent";
 import Pagination from "../Components/PaginationComponent";
-import Navbar from "../Components/NavBarComponent"; // Ensure Navbar is imported
+import Navbar from "../Components/NavBarComponent";
 import "../style folder/Home.css";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [favorites, setFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const moviesPerPage = 6;
+
+  const favorites = useSelector(state => state.myFavoriteReducer.favorites || []);
+  const showFavorites = useSelector(state => state.myFavoriteReducer.showFavorites);
+
+  // Debugging: Log the Redux state
+  const state = useSelector(state => state);
+  console.log("Redux State:", state);
 
   // Fetch movies from API
   useEffect(() => {
@@ -33,12 +40,18 @@ const Home = () => {
     fetchMovies();
   }, []);
 
-  // Filter movies based on search query
+  // Filter movies based on search query and favorites
   const filteredMovies = searchQuery
     ? movies.filter((movie) =>
         movie.title.toLowerCase().includes(searchQuery.toLowerCase())
       )
+    : showFavorites
+    ? favorites
     : movies;
+
+  // Debugging: Log the filtered movies
+  console.log("Show Favorites:", showFavorites);
+  console.log("Filtered Movies:", filteredMovies);
 
   const indexOfLastMovie = currentPage * moviesPerPage;
   const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
@@ -61,7 +74,6 @@ const Home = () => {
 
   return (
     <div className="homeContent">
-      {/* Pass handleSearchChange to Navbar */}
       <Navbar onSearchChange={handleSearchChange} />
       <div className="movie-grid">
         {currentMovies.map((movie) => (
