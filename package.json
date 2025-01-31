@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@google-cloud/translate": "^8.5.0",
     "@mui/icons-material": "^6.4.1",
     "@mui/material": "^6.4.1",
     "@redux-devtools/extension": "^3.3.0",
@@ -22,7 +23,8 @@
     "react-scripts": "5.0.1",
     "react-share": "^5.1.2",
     "redux": "^5.0.1",
-    "styled-components": "^6.1.14"
+    "styled-components": "^6.1.14",
+    "translate": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

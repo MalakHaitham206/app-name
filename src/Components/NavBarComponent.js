@@ -3,28 +3,36 @@ import userLoginIcon from '../resources/home_page_icons/usenloginIcon.svg';
 import searchIcon from '../resources/home_page_icons/searchIcon.svg';
 import heartIcon from '../resources/home_page_icons/heartIcon.png';
 import languageIcon from '../resources/home_page_icons/language-svgrepo-com.png';
+import darkModeIcon from '../resources/home_page_icons/mode-dark-svgrepo-com.png';
+import lightModeIcon from '../resources/home_page_icons/light-mode-svgrepo-com.png';
 import cartIcon from '../resources/home_page_icons/cart-icon.png';
 import logo from '../resources/home_page_imges/Meubel House_Logos-05.png';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Search from "./SearchComponent";
 import '../style folder/NavBar.css';
 import { FaSearch } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { showAllMovies, showFavorites } from "../redux_work/Actions/favorite_action";
-
+import { useLanguage } from "../redux_work/context/languageContext";
+import { useTheme } from "../redux_work/context/ThemeContext"; 
 
 
 const Navbar = ({ onSearchChange }) => {
-  const dispatch = useDispatch();
+  const { language, toggleLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
+  const dispatch = useDispatch();
+  
   const handleShowFavorites = () => {
     dispatch(showFavorites());
   };
+  const state = useSelector((state) => state);
+  const cartItems = useSelector(state => state.cart.items);
+  const favorites = useSelector(state => state.myFavoriteReducer.favorites || []);
 
   const handleShowAllMovies = () => {
     dispatch(showAllMovies());
   };
-
   return (
     <div className="d-block">
       <nav className="navbar navbar-expand-lg navStyle" id="navBar">
@@ -52,9 +60,10 @@ const Navbar = ({ onSearchChange }) => {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    <img src={languageIcon} alt="User Login" />
+                <a className="nav-link" href="#" onClick={toggleLanguage}>
+                    <img src={languageIcon} alt="Translate Icon" />
                   </a>
+
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#" onClick={handleShowFavorites}>
@@ -64,11 +73,12 @@ const Navbar = ({ onSearchChange }) => {
                 <li className="nav-item">
                   <a className="nav-link" href="#">
                     <img src={cartIcon} alt="Cart" />
+                    <span className="badge bg-danger">{cartItems.length}</span>
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    <i className="bi bi-box-arrow-right"></i>
+                <a className="nav-link" href="#" onClick={toggleTheme}>
+                    <img src={theme === "light" ? darkModeIcon : lightModeIcon} alt="Theme Icon" />
                   </a>
                 </li>
               </ul>

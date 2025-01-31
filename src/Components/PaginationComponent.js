@@ -1,7 +1,9 @@
 import React from "react";
 import "../style folder/paginationStyle.css";
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+
+const Pagination = ({ currentPage, totalPages, onPageChange ,numberOfMovies}) => {
+  
   return (
     <div className="pagination-container">
       {[...Array(totalPages)].map((_, index) => (
@@ -14,9 +16,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         </button>
       ))}
       <button 
-        className="page-button next" 
+        className= {currentPage === totalPages||numberOfMovies==0?"d-none":"page-button next "}
         onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        disabled={currentPage === totalPages||numberOfMovies==0}
       >
         Next
       </button>

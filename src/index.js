@@ -5,14 +5,19 @@ import { Provider } from 'react-redux';
 import store from '../src/redux_work/Store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { ThemeProvider } from "../src/redux_work/context/ThemeContext";
+import { LanguageProvider } from "../src/redux_work/context/languageContext";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  </Provider>,
+  <LanguageProvider>
+    <ThemeProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ThemeProvider>
+  </LanguageProvider>
+</Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
