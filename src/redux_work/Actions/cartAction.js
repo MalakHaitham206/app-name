@@ -1,27 +1,26 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const addToCart = createAsyncThunk(
-  'cart/addToCart',
-  async (movie, { rejectWithValue }) => {
-    try {
-      return movie;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
-
-export const removeFromCart = createAsyncThunk(
-  'cart/removeFromCart',
-  async (movieId, { rejectWithValue }) => {
-    try {
-      return movieId;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
-
-export const toggleCartVisibility = () => ({
-    type: 'TOGGLE_CART_VISIBILITY',
-  });
+export const addToCart = (movie) => {
+    return async (dispatch) => {
+      try {
+        dispatch({
+          type: 'cart/addToCart',
+          payload: movie,
+        });
+      } catch (error) {
+        console.error("Error adding to cart:", error);
+      }
+    };
+  };
+  
+  export const removeFromCart = (movieId) => {
+    return async (dispatch) => {
+      try {
+        dispatch({
+          type: 'cart/removeFromCart',
+          payload: movieId,
+        });
+      } catch (error) {
+        console.error("Error removing from cart:", error);
+      }
+    };
+  };

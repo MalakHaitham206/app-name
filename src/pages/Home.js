@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { useLanguage } from "../redux_work/context/languageContext";
 import { useTheme } from "../redux_work/context/ThemeContext"; 
 
+
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -42,16 +43,16 @@ const Home = () => {
     fetchMovies();
   }, [language]); 
 
- const filteredMovies = searchQuery
- ? movies.filter((movie) =>
-     movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-   )
- : showFavorites
- ? favorites
- : showCart
- ? cartItems
- : movies;
-
+const filteredMovies = searchQuery
+  ? movies.filter((movie) =>
+      movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  : showFavorites
+  ? favorites
+  : showCart
+  ? cartItems
+  : movies;
+  
   const indexOfLastMovie = currentPage * moviesPerPage;
   const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
   const currentMovies = filteredMovies.slice(indexOfFirstMovie, indexOfLastMovie);

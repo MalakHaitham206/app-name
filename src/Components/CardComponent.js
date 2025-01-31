@@ -3,6 +3,8 @@ import "../style folder/CardStyle.css";
 import SocialShareModal from "./shareComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorites, removeFromFavorites } from '../redux_work/Actions/favorite_action';
+import { addToCart, removeFromCart } from '../redux_work/Actions/cartAction';
+
 
 
 
@@ -48,7 +50,7 @@ const StyledCard = ({ movieData }) => {
           <p className="card-text text-muted">{description.substring(0, 70)} ...</p>
         </div>
         <div className="overlay d-flex flex-column justify-content-center align-items-center">
-        <button className="hoverBtn mb-2" onClick={handleCartClick}>
+        <button className={isInCart?"hoverBtnOnCart mb-2":"hoverBtn mb-2"} onClick={handleCartClick}>
             {isInCart ? "Remove from Cart" : "Add to Cart"}
           </button>
           <p className="d-flex gap-3">

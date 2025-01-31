@@ -28,6 +28,7 @@ const favoriteReducer = (state = initialState, action) => {
         ...state,
         showFavorites: true,
       };
+      
     default:
       return state;
   }

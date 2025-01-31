@@ -15,24 +15,40 @@ import { useDispatch, useSelector } from "react-redux";
 import { showAllMovies, showFavorites } from "../redux_work/Actions/favorite_action";
 import { useLanguage } from "../redux_work/context/languageContext";
 import { useTheme } from "../redux_work/context/ThemeContext"; 
+import { toggleCartVisibility } from "../redux_work/Reducers/cartReducer"; 
+import { useNavigate } from "react-router-dom";
 
 
 const Navbar = ({ onSearchChange }) => {
+  const navigate = useNavigate(); 
+
+  const handleUserIconClick = () => {
+    navigate("/");
+  };
+
   const { language, toggleLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
 
   const dispatch = useDispatch();
   
-  const handleShowFavorites = () => {
-    dispatch(showFavorites());
-  };
+ 
   const state = useSelector((state) => state);
   const cartItems = useSelector(state => state.cart.items);
   const favorites = useSelector(state => state.myFavoriteReducer.favorites || []);
-
-  const handleShowAllMovies = () => {
+  const handleShowFavorites = () => {
+    dispatch(showFavorites());
+    dispatch(toggleCartVisibility(false));
+  };
+  
+  const handleShowCart = () => {
+    dispatch(toggleCartVisibility());
     dispatch(showAllMovies());
   };
+  const handleShowAllMovies = () => {
+    dispatch(showAllMovies());
+    dispatch(toggleCartVisibility(false));
+  };
+
   return (
     <div className="d-block">
       <nav className="navbar navbar-expand-lg navStyle" id="navBar">
@@ -55,7 +71,7 @@ const Navbar = ({ onSearchChange }) => {
             <span className="navbar-text">
               <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-4 navContainer">
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="#" onClick={handleUserIconClick}>
                     <img src={userLoginIcon} alt="User Login" />
                   </a>
                 </li>
@@ -68,12 +84,13 @@ const Navbar = ({ onSearchChange }) => {
                 <li className="nav-item">
                   <a className="nav-link" href="#" onClick={handleShowFavorites}>
                     <img src={heartIcon} alt="Favorites" />
+                    {favorites.length > 0 && <span className="badge">{favorites.length}</span>}
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="#"  onClick={handleShowCart}>
                     <img src={cartIcon} alt="Cart" />
-                    <span className="badge bg-danger">{cartItems.length}</span>
+                    {cartItems.length > 0 && <span className="badge">{cartItems.length}</span>}
                   </a>
                 </li>
                 <li className="nav-item">
